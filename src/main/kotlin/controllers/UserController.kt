@@ -11,14 +11,21 @@ object UserController {
     private data class UserObject(val username: String, val email: String)
 
     private val users = hashMapOf(
-            randomId() to UserObject("Bob", "Bob@gmail.com"),
-            randomId() to UserObject("Alice", "Aliceb@gmail.com"),
-            randomId() to UserObject("James", "James@gmail.com")
+            "1" to UserObject("Bob", "Bob@gmail.com"),
+            "2" to UserObject("Alice", "Aliceb@gmail.com"),
+            "3" to UserObject("James", "James@gmail.com")
     )
 
-    fun getAllUserIds(ctx: Context) {
-        ctx.json(users)
+    fun getUserIds(ctx: Context) {
+        ctx.json(users.keys)
     }
 
-    private fun randomId() = UUID.randomUUID().toString()
+    fun getUser(ctx: Context) {
+        val user = users[ctx.param(":user-id")]
+        if (user == null) {
+            ctx.status(404).json("Not found ${ctx.param(":user-id")}")
+        } else {
+            ctx.json(user)
+        }
+    }
 }

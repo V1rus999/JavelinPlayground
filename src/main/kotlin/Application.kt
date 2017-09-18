@@ -11,7 +11,11 @@ fun main(args: Array<String>) {
 
     app.routes {
         path("users") {
-            get(UserController::getAllUserIds)
+            get(UserController::getUserIds)
+
+            path(":user-id") {
+                get(UserController::getUser)
+            }
         }
     }
 
