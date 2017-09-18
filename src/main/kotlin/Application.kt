@@ -14,7 +14,7 @@ fun main(args: Array<String>) {
             .start()
 
     app.routes {
-        get("/") {ctx -> ctx.redirect("users") }
+        get("/") { ctx -> ctx.redirect("users") }
         path("users") {
             get(UserController::getUserIds, roles(AuthRoles.AuthRoles.ANYONE))
 

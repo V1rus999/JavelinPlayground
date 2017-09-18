@@ -14,7 +14,6 @@ object AccessManager {
             permittedRoles.contains(AuthRoles.AuthRoles.ANYONE) -> handler.handle(ctx)
             ctx.userRoles.any { it in permittedRoles } -> handler.handle(ctx)
             else -> ctx.status(401).json("Unauthorised").header("WWW-Authenticate", "Basic")
-
         }
     }
 
