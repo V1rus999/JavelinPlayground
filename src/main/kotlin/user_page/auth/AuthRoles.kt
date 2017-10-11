@@ -1,4 +1,4 @@
-package auth
+package user_page.auth
 
 import io.javalin.security.Role
 

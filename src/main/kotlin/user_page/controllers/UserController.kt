@@ -1,4 +1,4 @@
-package controllers
+package user_page.controllers
 
 import io.javalin.Context
 
